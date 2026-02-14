@@ -1,0 +1,28 @@
+# include <stdio.h>
+int display(int arr[],int n);
+int insert(int arr[],int n);
+
+int main(){
+    int arr[]={1,2,3,4,5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    display(arr,n);
+    insert(arr,n);
+}
+
+int display(int arr[],int n){
+    for(int i=0; i<n; i++){
+        printf("%d \n",arr[i]);
+    }
+}
+
+int insert (int arr[],int n){
+    // Shift elements to the right
+    int pos,val;
+    printf("Enter postion & value : ");
+    scanf("%d %d",&pos,&val);
+    for (int i = n; i >= pos; i--) {
+        arr[i] = arr[i - 1];
+        arr[pos-1]=val;
+        n++;
+    } 
+}
