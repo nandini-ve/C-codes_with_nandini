@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int mySqrt(int x) {
+    if (x < 2) return x;  // sqrt(0)=0, sqrt(1)=1
+    
+    int left = 1, right = x / 2, ans = 0;
+    
+    while (left <= right) {
+        long long mid = left + (right - left) / 2;
+        long long sq = mid * mid;
+        
+        if (sq == x) {
+            return (int)mid;  // exact square root
+        } else if (sq < x) {
+            ans = (int)mid;   // possible answer, move right
+            left = mid + 1;
+        } else {
+            right = mid - 1;  // too large, move left
+        }
+    }
+    
+    return ans;  // floor of sqrt(x)
+}
+
+int main() {
+    printf("%d\n", mySqrt(4));  // Output: 2
+    printf("%d\n", mySqrt(8));  // Output: 2
+    printf("%d\n", mySqrt(0));  // Output: 0
+    printf("%d\n", mySqrt(1));  // Output: 1
+    return 0;
+}
