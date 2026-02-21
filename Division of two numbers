@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <limits.h>
+int divide(int dividend, int divisor) 
+{
+    if (divisor == 0) {
+        // handle division by zero
+        return INT_MAX;  // or some error code
+    }
+    if (dividend == INT_MIN && divisor == -1) {
+        // special case: overflow
+        return INT_MAX;
+    }
+    return dividend / divisor;
+}
+int main(){
+    int a;
+    a= divide(10,4);
+    printf("%d",a);
+}
